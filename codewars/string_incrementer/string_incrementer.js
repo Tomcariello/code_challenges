@@ -13,33 +13,25 @@
 // Attention: If the number has leading zeros the amount of digits should be considered.
 
 function incrementString (strng) {
-
+    console.log(strng)
     // if not a number, append "1'"
     if ( isNaN( parseInt(strng[strng.length - 1] ) ) ) {
-        strng = strng + 1;
+        return strng + 1;
     } else {
-        console.log("ends with a digit");
-        // If number, see how many digits back to go   
-        // iterate through string from back to front
+        // If number, see how many digits back to go. iterate through string from back to front
         let digitCount = 1;
         
         for (i=strng.length - 2; i > 0; i--) {
-            console.log("digitCount is " + digitCount);
             if ( !isNaN(parseInt(strng[i]))) {
                 // Increment the count
                 digitCount++;
             } else {
                 // Stop Looping
-                // break;
+                break;
             }
         }
 
-        // slice digitCount numbers off
-        let endDigits = strng.slice([strng.length - digitCount - 1, digitCount]);
-        console.log(endDigits);
-        // increment by 1
-        // Append the result 
+        // slice digitCount numbers off increment by 1 & Append the result 
+        return strng.slice(0,[strng.length - digitCount]) + (parseInt(strng.slice([strng.length - digitCount])) + 1)
     }  
-
-    return strng
-  }
+}
