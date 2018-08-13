@@ -12,15 +12,18 @@
 
 // Attention: If the number has leading zeros the amount of digits should be considered.
 
+// Notes: I should spend some time on Regex if I want to stay on CodeWars
+
 function incrementString (strng) {
     console.log(strng)
-    // if not a number, append "1'"
+    // if the last element in the string is not a number
     if ( isNaN( parseInt(strng[strng.length - 1] ) ) ) {
         return strng + 1;
     } else {
-        // If number, see how many digits back to go. iterate through string from back to front
+        // Its a number, see how many digits back to go. 
         let digitCount = 1;
         
+        //iterate through string from back to front. We can skip the first element since we already established it is a number
         for (i=strng.length - 2; i > 0; i--) {
             if ( !isNaN(parseInt(strng[i]))) {
                 // Increment the count
@@ -31,7 +34,17 @@ function incrementString (strng) {
             }
         }
 
-        // slice digitCount numbers off increment by 1 & Append the result 
-        return strng.slice(0,[strng.length - digitCount]) + (parseInt(strng.slice([strng.length - digitCount])) + 1)
+        //Store the opening text string
+        let answerText = strng.slice(0,[strng.length - digitCount]);;
+
+        //Store the ending digits
+        let answerNum = (parseInt(strng.slice([strng.length - digitCount])) + 1);
+
+        //Add 0s as many times as it takes to get the total lengths of the pieces to match the strng.length
+        while (answerText.length + answerNum.toString().length < strng.length) {
+            answerText += 0;            
+        }
+
+        return answerText + answerNum;
     }  
 }
