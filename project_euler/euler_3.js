@@ -19,7 +19,7 @@ let findLargestPrime = (val) => {
         if (val % i == 0) {
             //check if i is prime
             if (isPrime(i) == true) {
-                console.log(`It is! The largest prime divisor for ${val} so far is ${i}`)
+                console.log(`The largest prime divisor for ${val} so far is ${i}`)
                 // If i is prime save that number
                 largestprime = i;
             }
@@ -34,7 +34,7 @@ let isPrime = (num) => {
          return true;
     }
     if (num % 2 == 0) {
-        return true;
+        return false;
    }
 
     for (var i=3; i <= num / 2 -1; i += 2) {
