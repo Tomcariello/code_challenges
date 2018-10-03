@@ -10,7 +10,10 @@ let numtocheck = 3;
 
 let isPrime = (num) => {
     // Handle 1 manually
-    if (num == 1) {
+    if ( num == 1) {
+        return false;
+   }
+    if ( num == 2) {
          return true;
     }
     if (num % 2 == 0) {
